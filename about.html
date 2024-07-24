@@ -1,6 +1,6 @@
 <html><head>
     <!--<base href="http://127.0.0.1:5500/">-->
-<title>Vue.js Product Showcase</title>
+<title>About Vue.js Robot Products</title>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <style>
 body, html {
@@ -39,48 +39,25 @@ nav a.active {
     color: #42b883;
 }
 .content {
-    display: flex;
     flex-grow: 1;
-    padding: 20px;
-}
-.column {
-    flex: 1;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    margin: 10px;
-    border-radius: 10px;
-}
-.product {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.about-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 800px;
+}
+h1 {
+    color: #35495e;
     margin-bottom: 20px;
 }
-.product img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 20px;
-}
-.product-info h3 {
-    margin: 0;
+p {
     color: #35495e;
-}
-.product-info p {
-    color: #42b883;
-    font-weight: bold;
-}
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column;
-    }
-    .product {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .product img {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+    line-height: 1.6;
 }
 </style>
 </head>
@@ -93,23 +70,15 @@ nav a.active {
             <path d="M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401h25.11L64.167 119.13z" fill="#41b883"/>
         </svg>
         <nav>
-            <a href="/" class="active">Home</a>
-            <a href="/about.html">About</a>
+            <a href="/">Home</a>
+            <a href="/about.html" class="active">About</a>
         </nav>
     </header>
 
     <div class="content">
-        <div class="column">
+        <div class="about-container">
             <h1>{{ pageTitle }}</h1>
-        </div>
-        <div class="column">
-            <div v-for="product in products" :key="product.id" class="product">
-                <img :src="product.image" :alt="product.name">
-                <div class="product-info">
-                    <h3>{{ product.name }}</h3>
-                    <p>{{ product.price | currencydecimal }}€</p>
-                </div>
-            </div>
+            <p>{{ description }}</p>
         </div>
     </div>
 </div>
@@ -118,18 +87,9 @@ nav a.active {
 new Vue({
     el: '#app',
     data: {
-        pageTitle: 'Mes produits',
-        products: [
-            { id: 1, name: 'Produit 1', price: 10.99, image: './images/image1.jpg' },
-            { id: 2, name: 'Produit 2', price: 15.50, image: './images/image2.jpg' },
-            { id: 3, name: 'Produit 3', price: 22.00, image: './images/image3.jpg' }
-        ]
-    },
-    filters: {
-    currencydecimal (value) {
-      return value.toFixed(2)
+        pageTitle: 'About Our Robot Products',
+        description: 'Welcome to our futuristic robot product line! We specialize in creating innovative, high-quality robots designed to make your life easier and more enjoyable. From robot clocks that wake you up with a smile to intelligent vacuum cleaners that keep your home spotless, our products combine cutting-edge technology with user-friendly design. Our team of engineers and designers work tirelessly to bring you the latest advancements in robotics, ensuring that each product meets the highest standards of quality and functionality. Whether you\'re a tech enthusiast or simply looking for smart solutions to everyday challenges, our robot products are here to assist and amaze you. Explore our range and step into the future of home automation and robotic companionship!'
     }
-  }
 })
 </script>
 </body></html>
